@@ -23,7 +23,16 @@ public class Ping {
     @Column(nullable = true)
     private String insertedBy;
 
-    @Column(nullable = true)
-    private String age;
 
+
+    @Column(nullable = true)
+    private int age;
+
+    public Ping(String insertedBy) {
+        this.insertedBy = insertedBy;
+        age = LocalDateTime.now().getMinute();
+    }
+
+    public Ping() {
+    }
 }

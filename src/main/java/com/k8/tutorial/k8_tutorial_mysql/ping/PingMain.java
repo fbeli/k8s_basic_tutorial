@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContext;
 
 import java.util.List;
 
-@SpringBootApplication
+//@SpringBootApplication // used just to test connection
 public class PingMain  {
 
     static Logger logger = LoggerFactory.getLogger(PingMain.class);

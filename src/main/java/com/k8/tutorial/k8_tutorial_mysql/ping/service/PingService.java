@@ -12,9 +12,13 @@ public class PingService {
     @Autowired
     PingRepository pingRepository;
 
-    public List<Ping> getPings(){
+    public List<Ping> getPings() {
+        return pingRepository.findAll();
+    }
 
-    return pingRepository.findAll();
+    public void save(Ping ping) {
+        pingRepository.save(ping);
+    }
 
-}
+
 }
