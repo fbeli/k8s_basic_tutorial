@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  labels: #optional
+    app: mysql
+spec:
+  replicas: 1 #numbers of replicas  1 to database
+  selector:
+    matchLabels: #this name belons to metadata label
+      app: mysql
+  template:
+    metadata:
+      labels: #pods need mandatory labes to be identiflied
+        app: mysql
+    spec:
+      containers:
+        - name: mysqldb
+          image: mysql/mysql-server:latest
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "1"
+            requests:
+              memory: 256Mi
+              cpu: "0.2"
+          ports:
+            - containerPort: 3306
+          #pegando do arquivo mongo-secret.yaml
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret #arquivo de origem
+                  key: mysql-password
+            - name: MYSQL_ROOT_HOST
+              value: '%'
+--- #separate file in yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service #defined in mongo-config.yaml - mongo-url: mono-service
+spec:
+  selector:
+    app: mysql #elect pods to foewad the request - service it belongs
+  ports:
+    - protocol: TCP
+      port: 3306  #port of the service
+      targetPort: 3306 #ports belongs to the service = container pod port
