@@ -15,6 +15,7 @@
     <description>k8_Tutorial_mysql</description>
     <properties>
         <java.version>11</java.version>
+        <oauth2-oidc-sdk.version>6.21.2</oauth2-oidc-sdk.version>
     </properties>
     <dependencies>
         <dependency>
@@ -47,6 +48,20 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.28</version>
+        </dependency>
+
+        <!-- add security-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>
+                spring-boot-starter-oauth2-resource-server
+            </artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.nimbusds</groupId>
+            <artifactId>oauth2-oidc-sdk</artifactId>
+            <version>${oauth2-oidc-sdk.version}</version>
         </dependency>
 
 
