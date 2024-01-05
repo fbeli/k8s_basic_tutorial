@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.k8.tutorial.k8_tutorial_mysql.K8TutorialMysqlApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.283 s - in com.k8.tutorial.k8_tutorial_mysql.K8TutorialMysqlApplicationTests

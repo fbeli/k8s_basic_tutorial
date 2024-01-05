@@ -1,0 +1,7 @@
+/home/fbelisario/Desenvolvimento/workspace/k8_Tutorial_mysql/src/main/java/com/k8/tutorial/k8_tutorial_mysql/ping/repository/PingRepository.java
+/home/fbelisario/Desenvolvimento/workspace/k8_Tutorial_mysql/src/main/java/com/k8/tutorial/k8_tutorial_mysql/ping/service/PingService.java
+/home/fbelisario/Desenvolvimento/workspace/k8_Tutorial_mysql/src/main/java/com/k8/tutorial/k8_tutorial_mysql/ping/model/Ping.java
+/home/fbelisario/Desenvolvimento/workspace/k8_Tutorial_mysql/src/main/java/com/k8/tutorial/k8_tutorial_mysql/security/ResourceServerConfig.java
+/home/fbelisario/Desenvolvimento/workspace/k8_Tutorial_mysql/src/main/java/com/k8/tutorial/k8_tutorial_mysql/ping/controller/EntradaController.java
+/home/fbelisario/Desenvolvimento/workspace/k8_Tutorial_mysql/src/main/java/com/k8/tutorial/k8_tutorial_mysql/ping/PingMain.java
+/home/fbelisario/Desenvolvimento/workspace/k8_Tutorial_mysql/src/main/java/com/k8/tutorial/k8_tutorial_mysql/K8TutorialMysqlApplication.java

@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8-tutorial-deployment
+  labels: #optional
+    app: k8-tutorial
+spec:
+  replicas: 2 #numbers of replicas  1 to database
+  selector:
+    matchLabels: #this name belons to metadata label
+      app: k8-tutorial
+  template:
+    metadata:
+      labels: #pods need mandatory labes to be identiflied
+        app: k8-tutorial
+    spec:
+      containers:
+        - name: k8-tutorial
+          image: fbeli/api_k8_tutorial:2.0 #dockerhub
+          resources:
+            limits:
+              memory: 512Mi
+              cpu: "1"
+            requests:
+              memory: 256Mi
+              cpu: "0.2"
+          ports:
+            - containerPort: 8081
+          env:
+            - name: DB_USER
+              #value: mongo-user
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret #arquivo de origem sendo secret
+                  key: mysql-user
+            - name: DB_PASS
+              #value: mongo-user
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret #arquivo de origem sendo secret
+                  key: mysql-password
+            - name: DB_URL
+              valueFrom:
+                configMapKeyRef: #como vem pelo configMap
+                  name: mysql-config
+                  key: mysql-url
+
+
+
+--- #separate file in yaml
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8-tutorial-service #defined in webapp-config.yaml - webapp-url: mono-service
+spec:
+  type: NodePort
+  selector:
+    app: k8-tutorial #elect pods to foewad the   request - service it belongs
+  ports:
+    - protocol: TCP
+      port: 8081  #port of the service
+      targetPort: 8081 #ports belongs to the service = container pod port
+      nodePort: 30081
